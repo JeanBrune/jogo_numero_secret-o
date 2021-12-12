@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret number guesser</title>
+    <link rel="stylesheet" href="../Adivinhador de numero secreto/css/numero_secreto.css">
+</head>
+<body>
+    <h1>Secretão dos Números</h1>
+    <p>Adivinhe o numero secretão e ganhe absolutamente nada por isso</p>
+
+    <section class="principal">
+        <div id="area_advinhar">
+            <label for="numero_inserido">Digite um número de 1 a 20</label>
+            <br>
+            <input type="number" name="numero_inserido" id="numero_input" placeholder="1 a 20" min="1" max="20" oninput="converter_algarismo()" onclick="apagar(this.id)" required>
+            <br>
+            <input type="submit" onclick="adivinhar()" value="advinhar">
+        </div>
+        <div class="esconder" id="area_reiniciar">
+            <label for="reiniciar_jogo">Clique para reiniciar o jogo ou feche a pagina para sair</label>
+            <input type="submit" onclick="reiniciar()" value="Reiniciar Jogo">
+        </div>
+    </section>
+    <section class="saida">
+        <img class="esconder" id="errou" src="/Desafios/Adivinhador de numero secreto/img/faustão_errou.jpg" alt="errou!">
+        <img class="esconder" id="acertou" src="/Desafios/Adivinhador de numero secreto/img/sherock holmes.jpg" alt="acertou">
+        <p id="resposta"></p>
+    </section>
+
+
+    <script src="../Adivinhador de numero secreto/js/numero_secreto.js"></script>
+</body>
+</html>
