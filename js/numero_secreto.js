@@ -61,6 +61,9 @@ function adivinhar() {
     if (chances == 4 && numero_tentativa != numero_secreto) {
         console.log("essa foi a ultima tentativa")
 
+        //exibir mensagem final 
+        document.getElementById("resposta").innerHTML = "Fim de jogo. <br> O numero secretão era " + numero_secreto
+        
         //esconder botão de continuar o jogo
         div_advinhar.classList.toggle("esconder")
 
@@ -69,7 +72,7 @@ function adivinhar() {
     }
 
     //se dentro de 5 chances, permitir função para adivinhar
-    if (chances < 5) {
+    else if (chances < 5) {
         //aumentar o contador de chances a cada tentativa
         chances = chances + 1
         console.log(chances + "º tentativa usada. Você tem " + (5 - chances) + " chances, de um total de cinco")
