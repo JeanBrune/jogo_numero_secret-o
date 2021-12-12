@@ -156,4 +156,3 @@ function reiniciar() {
     errou_img.classList.add("esconder")
     acertou_img.classList.add("esconder")
 }
-
