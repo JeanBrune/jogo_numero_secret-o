@@ -23,6 +23,7 @@ function apagar(id) {
     console.log("campo " + id + " selecionado e apagado")
 }
 
+//criar função de gerar numero secreto
 
 //gerar o numero secreto ao carregar a pagina
 var numero_secreto = parseInt(Math.random() * 21)
@@ -39,7 +40,6 @@ else if (numero_secreto > 20) {
     console.log("o numero secreto foi gerado maior do que um valor válido e convertido automaticamente para o numero inteiro e valido mais próximo: " + numero_secreto)
 }
 
-
 // //criar um contador de tentativas, para um total de 5 chances de adivinhar o numero
 var chances = 0
 
@@ -49,6 +49,8 @@ var div_reiniciar = document.getElementById("area_reiniciar")
 var acertou_img = document.getElementById("acertou")
 var errou_img = document.getElementById("errou")
 
+//criar array vazio para tentativas passadas
+var tentativas_passadas = []
 
 //rodar a função de adivinhação
 function adivinhar() {
@@ -56,6 +58,14 @@ function adivinhar() {
     var numero_tentativa = parseInt(document.getElementById("numero_input").value)
     console.log("você chutou o nº " + numero_tentativa)
 
+    //inserir tentativas no array de tentativas passadas
+    //verificar se é um numero ou campo vazio ou letras
+
+    //caso seja um numero válido
+    if (isNaN(numero_tentativa) == false){
+     tentativas_passadas.push(numero_tentativa)
+    console.log("Tentativas passadas: " + tentativas_passadas)
+    }    
 
     //se chances já acabaram
     if (chances == 4 && numero_tentativa != numero_secreto) {
@@ -63,7 +73,7 @@ function adivinhar() {
 
         //exibir mensagem final 
         document.getElementById("resposta").innerHTML = "Fim de jogo. <br> O numero secretão era " + numero_secreto
-        
+
         //esconder botão de continuar o jogo
         div_advinhar.classList.toggle("esconder")
 
@@ -111,7 +121,7 @@ function adivinhar() {
             errou_img.classList.remove("esconder")
 
             //exibir mensagem de dica
-            document.getElementById("resposta").innerHTML = "Errou! <br> O número secretão é menor do que " + numero_tentativa + "<br>" + "Você tem mais " + (5 - chances) + " chance(s)"
+            document.getElementById("resposta").innerHTML = "Errou! <br> O número secretão é menor do que " + numero_tentativa + "<br>" + "Você já chutou os numeros " + tentativas_passadas + " e tem mais tem mais " + (5 - chances) + " chance(s)"
         }
 
         //caso em que o input é menor que numero secreto
@@ -120,7 +130,7 @@ function adivinhar() {
             errou_img.classList.remove("esconder")
 
             //exibir mensagem de dica
-            document.getElementById("resposta").innerHTML = "Errou! <br> O número secretão é maior do que " + numero_tentativa + "<br>" + "Você tem mais " + (5 - chances) + " chances(s)"
+            document.getElementById("resposta").innerHTML = "Errou! <br> O número secretão é maior do que " + numero_tentativa + "<br>" + "Você já chutou os numeros " + tentativas_passadas + " e tem mais tem mais " + (5 - chances) + " chance(s)"
         }
         //hipotese de erro ao inserir qualquer outra coisa
         else {
@@ -140,6 +150,20 @@ function reiniciar() {
     //sortear novo numero secreto sem atualizar a pagina
     numero_secreto = parseInt(Math.random() * 21)
     console.log("Um novo numero secretão foi gerado aleatoriamente e é " + numero_secreto)
+    
+    //caso numero secreto seja gerado menor do que 1
+    if (numero_secreto < 1) {
+        numero_secreto = 1
+        console.log("o numero secreto foi gerado menor do que o valor minimo e convertido automaticamente para o numero inteiro e valido mais próximo: " + numero_secreto)
+    }
+    //caso o numero secretro seja gerado maior do que 20
+    else if (numero_secreto > 20) {
+        numero_secreto = 20
+        console.log("o numero secreto foi gerado maior do que um valor válido e convertido automaticamente para o numero inteiro e valido mais próximo: " + numero_secreto)
+    }
+
+    //resetar tentativas passadas
+    tentativas_passadas = []
 
     //esconder botão de continuar o jogo
     div_advinhar.classList.toggle("esconder")
