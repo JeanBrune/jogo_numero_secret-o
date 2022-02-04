@@ -1,67 +1,36 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Modelo</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret number guesser</title>
+    <link rel="stylesheet" href="css/numero_secreto.css">
 </head>
-
 <body>
+    <h1>Secretão dos Números</h1>
+    <p>Adivinhe o numero secretão e ganhe absolutamente nada por isso</p>
 
-  <section class="container">
-    <h1>Calculadora</h1>
-
-      <table class="calculadora">
-        <tr>
-          <td colspan="4"><input type="number" class="display" placeholder=0 maxlength="10" ></td>
-        </tr>
-  
-
-          <tr>
-            <td><button class="btn btn-clear clear" onclick="limpar()">C</button></td>
-          </tr>
-  
-        <tr>
-          <td colspan="2"><button class="btn btn-op backspace">⌫</button></td>
-            <td class="a"><button class="btn btn-op">%</button></td>
-            <td class="a"><button class="btn btn-op">/</button></td>
-        </tr>
-  
-        <tr>
-          <td><button class="btn btn-num">7</button></td>
-          <td><button class="btn btn-num">8</button></td>
-          <td><button class="btn btn-num">9</button></td>
-          <td><button class="btn btn-op">*</button></td>
-        </tr>
-  
-        <tr>
-          <td><button class="btn btn-num">4</button></td>
-          <td><button class="btn btn-num">5</button></td>
-          <td><button class="btn btn-num">6</button></td>
-          <td><button class="btn btn-op">+</button></td>
-        </tr>
-  
-        <tr>
-          <td><button class="btn btn-num">1</button></td>
-          <td><button class="btn btn-num">2</button></td>
-          <td><button class="btn btn-num">3</button></td>
-          <td><button class="btn btn-op">-</button></td>
-        </tr>
-  
-        <tr>
-          <td><button class="btn btn-decimal" onclick="decimal()">.</button></td>
-          <td><button class="btn btn-num">0</button></td>
-          <td colspan="2"><button class="btn btn-calcular igual" onclick="calcular()">=</button></td>
-        </tr>
-      </table>
+    <section class="principal">
+        <div id="area_advinhar">
+            <label for="numero_inserido">Digite um número de 1 a 20</label>
+            <br>
+            <input type="number" name="numero_inserido" id="numero_input" placeholder="1 a 20" min="1" max="20" oninput="converter_algarismo()" onclick="apagar(this.id)" required>
+            <br>
+            <input type="submit" onclick="adivinhar()" value="advinhar">
+        </div>
+        <div class="esconder" id="area_reiniciar">
+            <label for="reiniciar_jogo">Clique para reiniciar o jogo ou feche a pagina para sair</label>
+            <input type="submit" onclick="reiniciar()" value="Reiniciar Jogo">
+        </div>
+    </section>
+    <section class="saida">
+        <img class="esconder" id="errou" src="img/faustão_errou.jpg" alt="errou!">
+        <img class="esconder" id="acertou" src="img/sherock holmes.jpg" alt="acertou">
+        <p id="resposta"></p>
+    </section>
 
 
-  </section>
-
-  <script src="./assets/js/calculadora.js"></script>
+    <script src="js/numero_secreto.js"></script>
 </body>
-
 </html>
